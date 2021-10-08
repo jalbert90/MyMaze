@@ -47,3 +47,4 @@ MonoBehaviour:
     x: 10
     z: 10
   cellPrefab: {fileID: 8921847730792180453, guid: fa07ab9cc89f0c145a659ee95c34b4ee, type: 3}
+  stepDelay: 0.1
