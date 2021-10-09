@@ -1,11 +1,13 @@
 using UnityEngine;
 
-[System.Serializable] // view IntVector2 structs in the inspector window
+[System.Serializable]     // View IntVector2 structs in the inspector window
 public struct IntVector2
 {
-    public int x, z;
+    public int x, z;      // Hold x and z here
 
     // Constructor
+    // Each IntVector2 will have an x-component and a z-component
+    // new IntVector2(x, z)
     public IntVector2 (int x, int z)
     {
         this.x = x;
