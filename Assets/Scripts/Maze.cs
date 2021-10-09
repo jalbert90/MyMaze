@@ -41,7 +41,7 @@ public class Maze : MonoBehaviour
 
         if (ContainsCoordinates(coordinates))                                                  // Checks that the coordinates are in the maze
         {
-            if (GetCell(coordinates) == null)                                                  // Checks that the current cell has not been visited
+            if (GetCell(coordinates) == null)                                                  // Checks that the current cell has not been created
             {
                 activeCells.Add(CreateCell(coordinates));                                      // Create cell and add to activeCells list
                 currentIndex++;                                                                // Mark location of newly created cell by incrementing current index location
