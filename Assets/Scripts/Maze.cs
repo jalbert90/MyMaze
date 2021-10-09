@@ -38,10 +38,18 @@ public class Maze : MonoBehaviour
         IntVector2 coordinates = activeCells[currentIndex].coordinates; // Assign the current cell's coordinates from MazeCell to a temporary coordinates
         coordinates += MazeDirections.GetRandomDirection().DirectionToIntVector2(); // Move 1 cell North, East, South, or West
 
-        if (ContainsCoordinates(coordinates) && GetCell(coordinates) == null)   // Checks that the coordinates are in the maze && cell has not been created
+        if (ContainsCoordinates(coordinates))   // Checks that the coordinates are in the maze
         {
-            activeCells.Add(CreateCell(coordinates));   // Create cell and add to activeCells list
-            currentIndex++;
+            if (GetCell(coordinates) == null)   // Checks that the current cell has not been visited
+            {
+                activeCells.Add(CreateCell(coordinates));   // Create cell and add to activeCells list
+                currentIndex++; // Mark location of newly created cell by incrementing current index location
+            }
+            else // If cell has already been created
+            {
+                activeCells.RemoveAt(currentIndex); // Remove from activeCells list
+                currentIndex--; // Decrement the current index location
+            }
         }
     }
 
