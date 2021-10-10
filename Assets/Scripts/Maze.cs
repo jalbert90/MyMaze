@@ -10,6 +10,8 @@ public class Maze : MonoBehaviour
     public float stepDelay;
     private int currentIndex;
     private List<MazeCell> activeCells;
+    public MazePassage passagePrefab;
+    public MazeWall wallPrefab;
 
     // Generate the maze for the mazeInstance
     public IEnumerator Generate ()
@@ -85,4 +87,18 @@ public class Maze : MonoBehaviour
 
         return newCell;
     }
+
+    // Create wall
+    private void CreateWall (MazeCell cell, MazeCell otherCell, MazeDirection direction)
+    {
+        // Wall for cell
+        MazeWall wall = Instantiate(wallPrefab) as MazeWall;
+        wall.Initialize(cell, otherCell, direction);
+
+        // Wall for otherCell
+        wall = Instantiate(wallPrefab) as MazeWall;
+        wall.Initialize(otherCell, cell, direction.GetOpposite());
+    }
+
+    // Create passage
 }

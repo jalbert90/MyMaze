@@ -33,4 +33,44 @@ public static class MazeDirections
     {
         return directionVectors[(int)direction];
     }
+
+    // Opposite directions
+    private static MazeDirection[] oppositeDirections =
+    {
+        MazeDirection.South,
+        MazeDirection.West,
+        MazeDirection.North,
+        MazeDirection.East
+    };
+
+    //
+    // Summary:
+    //     Returns the cardinal direction opposite to the passed direction
+    //
+    // Parameters:
+    //   direction:
+    public static MazeDirection GetOpposite(this MazeDirection direction)
+    {
+        return oppositeDirections[(int)direction];
+    }
+
+    // Rotate wall by these amounts
+    private static Quaternion[] rotations =
+    {
+        Quaternion.Euler(0f, 0f, 0f),     // North wall
+        Quaternion.Euler(0f, 90f, 0f),    // East wall
+        Quaternion.Euler(0f, 180f, 0f),   // South wall
+        Quaternion.Euler(0f, 270f, 0f)    // West wall
+    };
+
+    //
+    // Summary:
+    //     Returns the quaternion corresponding to the passed direction
+    //
+    // Parameters:
+    //   direction:
+    public static Quaternion DirectionToRotation (this MazeDirection direction)
+    {
+        return rotations[(int)direction];
+    }
 }
